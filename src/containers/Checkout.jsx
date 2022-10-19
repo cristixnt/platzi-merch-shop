@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import '@styles/components/Checkout.css';
 import { Link } from 'react-router-dom';
 import AppContext from '@context/AppContext';
+import { Helmet } from 'react-helmet';
 
 const Checkout = () => {
   const { state, removeFromCart } = useContext(AppContext);
@@ -19,6 +20,9 @@ const Checkout = () => {
 
   return (
     <div className="Checkout">
+      <Helmet>
+        <title>Platzi Conf Merch - Lista de pedidos</title>
+      </Helmet>
       <div className="Checkout-content">
         {cart.length > 0 ? <h3>Lista de pedidos:</h3> : <h3>Sin pedidos...</h3>}
         {cart.map((item, key) => (
@@ -28,7 +32,7 @@ const Checkout = () => {
               <span>${item.price}</span>
             </div>
             <button type="button" onClick={() => handleRemove(item)}>
-              <i className="fas fa-trash-alt" style={{cursor: 'pointer'}}></i>
+              <i className="fas fa-trash-alt" style={{ cursor: 'pointer' }}></i>
             </button>
           </div>
         ))}
